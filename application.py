@@ -67,6 +67,8 @@ def handle_signup():
 	email = request.form["email"]
 	password = request.form["password"]
 	pass_conf = request.form["password_confirmation"]
+
+	#temp values for until the front end is fixed
 	username = "default"
 	DOB = "00/00/00"
 	sex = "defualt"

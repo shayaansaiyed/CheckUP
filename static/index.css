@@ -1,0 +1,370 @@
+/* Header */
+.header {
+  width: 100%;
+  padding: 5px;
+  background-color: #1b9988;
+  position: fixed;
+}
+
+/* Nav bar */
+.nav {
+  background-color: #1b9988;
+}
+
+/* Logo */
+.logoDiv {
+  width: 10%;
+  float: left;
+  padding: 3px;
+}
+.logo {
+  background-color: #ffffff;
+  padding: 2px;
+}
+
+
+/* Style buttons */
+.navButton {
+    background-color: #ffffff; /* White background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    cursor: pointer; /* Mouse pointer on hover */
+    border: solid;
+    border-color: #1b9988;
+}
+
+/* Darker background on mouse-over */
+.navButton:hover {
+    background-color: #1b9988;
+    border: solid;
+    border-color: #ffffff;
+}
+
+
+
+
+ /* Icons */
+ .menu {
+  width: 90%;
+ }
+ .icon {
+  float: right;
+  width: auto;
+  padding-right: 1vw;
+ }
+
+ span.uploadOrange{
+  background: url(/upload-orange.svg) no-repeat center; 
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+ }
+
+ span.folderOrange{
+  background: url(../checkUpScratch/svg/folder-orange.svg) no-repeat center; 
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+ }
+
+ span.graphOrange{
+  background: url(../checkUpScratch/svg/graph-orange.svg) no-repeat center; 
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+ }
+
+ span.settingsOrange{
+  background: url(../checkUpScratch/svg/settings-orange.svg) no-repeat center; 
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+ }
+
+/* Login */
+ .login {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+  align-self: center;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  padding: 0px 10px 0px 10px;
+ }
+
+ .login:hover {
+  color: #eb5501;
+ }
+
+/* Sign Up Nav*/
+
+ .signup {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+  align-self: center;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  padding: 0px 10px 0px 10px;
+ }
+
+ .signup:hover {
+  color: #eb5501;
+ }
+
+/* Sign In Nav*/
+
+ .signin {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+  align-self: center;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  padding: 0px 10px 0px 10px;
+ }
+
+ .signin:hover {
+  color: #eb5501;
+ }
+
+/* Main Page Logo */
+ .mainLogo {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  font-family: 'Raleway', sans-serif;
+  font-style: bold;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+ }
+
+ .logoLarge {
+  width: 80vw;
+  height: auto;
+ }
+
+ .lgLogoBk {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #000000; 
+  font-size: 20vw;
+  text-align: center;
+  float: center;
+ }
+
+ .lgLogoGr {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #1b9988;
+  font-size: 20vw;
+  text-align: center;
+  float: center;
+ }
+
+ .mdLogoOr {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #eb5501;
+  font-size: 7vw;
+  text-align: center;
+  float: center;
+ }
+
+/* Logout */
+ .logout {
+  border: solid;
+  border-color: #1b9988;
+  padding: 3px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+  align-self: center;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+ }
+
+ .logout:hover
+ {
+  color: #eb5501;
+ }
+
+ /* Sign In Page */
+ .container-signin {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}
+
+.buttonSignIn {
+  background-color: #eb5501; /* orange background */
+  color: #ffffff; /* White text */
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501; 
+  font-family: 'Raleway', sans-serif;
+  float: center;
+}
+
+.buttonSignIn:hover {
+  background-color: #ffffff; /* White background */
+  color: #eb5501; /* White text */
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Sign UP */
+.container-signup {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}
+
+.panel-heading {
+  padding: 0px;
+}
+
+.panel-body {
+  padding: 0px;
+}
+
+/* Graph Page */
+
+.container-graph {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}
+
+.completebutton-graph {
+  background-color: #eb5501; /* orange background */
+  color: white; /* White text */
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+}
+
+/* Darker background on mouse-over */
+.completebutton-graph:hover {
+  background-color: white; /* White background */
+  color: #eb5501;
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501;
+}
+.graph {
+     width:100%;
+    height: auto; /*height of your image*/
+}
+
+/* Upload */
+.container-upload{
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}
+
+.data-box{
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.uploadbutton {
+  margin: 2vw;
+  background-color: #eb5501; /* White background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Darker background on mouse-over */
+.uploadbutton:hover {
+  background-color: white; /* White background */
+  border: none; /* Remove borders */
+  color: #eb5501; /* White text */
+  cursor: pointer; /* Mouse pointer on hover */
+  border: solid;
+  border-color: #eb5501;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+.form-upload-btn {
+  padding-top: 15px;
+}
+
+.input-box {
+  margin-top: 5px;
+}

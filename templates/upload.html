@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Custom styles for this template -->
+    <link href="../index.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
+
+    <title>CheckUP - Upload</title>
+
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="nav">
+        <div class="logoDiv">
+          <a href="index.html"><img src="../svg/checkUp-logo-small.png" class="logo"></a>
+        </div>
+
+        <div class="menu">
+          <div class="icon">
+            <button class="btn input-class-level navButton" formaction="/upload" formmethod="GET"><span class="uploadOrange"></span></button>
+          
+            <button class="btn input-class-level navButton" formaction="/files" formmethod="GET"><span class="folderOrange"></span></button>
+          
+            <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET"><span class="graphOrange"></span></button>
+          
+            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET"><span class="settingsOrange"></span></button>
+            
+            <form action="/logout" action="POST" class="logout">
+              Logout
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <!-- Page Content -->
+    <div class="container-upload">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Upload A File
+      </h1>
+
+<!--       <h1 class="my-4">Upload a file
+        <small>Secondary Text</small>
+      </h1> -->
+
+      <div class="row">
+
+        <div class="col-lg-6 fileUpload">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">
+                Upload a document:
+              </h4>
+              <form>
+                  <div class="form-horizontal">
+                      <div class="form-upload-name">
+                        <div class="row">
+                          <div class = "col-lg-12">
+                            <label for="FileName">Please enter the name of the file:</label>
+                          </div>
+                        </div>
+                          <input type="text" class="form-control" id="FileName" aria-describedby="emailHelp" placeholder="File Name">
+                      </div>
+                      <div class="form-upload-btn">
+                          <input type="file" class="form-control-file" id="inputFile" aria-describedby="fileHelp">
+                      </div>
+                      <div class="row">
+                        <div class="center-block">
+                          <div class="col-lg-3">
+                            <button class="btn btn-lg uploadbutton"> Upload </button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title">
+                Or Enter Your Data:
+              </h4>
+              <div class = "form-horizontal">
+                <form>
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="height">
+                      Height 
+                    </label>
+                    <div class="col-lg-2 data-box">
+                        <input type="text" class="form-control" id="height-ft"  placeholder="0.00">
+                    </div>
+                      <label class="control-label col-lg-1" for="height-ft">
+                        ft. 
+                      </label>
+                    <div class="col-lg-2 data-box">
+                      <input type="text" class="form-control" id="height-in"  placeholder="0.00">
+                    </div>
+                    <label class="control-label col-lg-1" for="height-in">
+                      in. 
+                    </label>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="weight">
+                      Weight 
+                    </label>
+                    <div class="col-lg-2 data-box">
+                      <input type="text" class="form-control" id="weight"  placeholder="0.00">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="bp">
+                      Blood Pressure 
+                    </label>
+                    <div class="col-lg-2 data-box">
+                      <input type="text" class="form-control input-box" id="height"  placeholder="0.00">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="hr">
+                      Heart Rate 
+                    </label>
+                    <div class="col-lg-2 data-box">
+                      <input type="text" class="form-control input-box" id="hr"  placeholder="0.00">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="bs">
+                      Blood Sugar 
+                    </label>
+                    <div class="col-lg-2 data-box">
+                      <input type="text" class="form-control input-box" id="bs"  placeholder="0.00">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="center-block">
+                      <div class="col-xs-6 col-sm-3">
+                        <button class="btn btn-lg uploadbutton"> 
+                            Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

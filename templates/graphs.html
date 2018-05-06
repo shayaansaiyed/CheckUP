@@ -51,19 +51,19 @@
                 <img src="/static/upload-orange.svg" width="25px" height="25px">
               <!-- </span> -->
             </button>
-          
+
             <button class="btn input-class-level navButton" formaction="/files" formmethod="GET">
              <!--  <span class="folderOrange"> -->
                 <img src="/static/folder-orange.svg" width="25px" height="25px">
               <!-- </span> -->
             </button>
-          
+
             <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET">
               <!-- <span class="graphOrange"> -->
                 <img src="/static/graph-orange.svg" width="25px" height="25px">
               <!-- </span> -->
             </button>
-          
+
             <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET">
               <span class="settingsOrange">
                 <img src="/static/settings-orange.svg" width="25px" height="25px">
@@ -75,7 +75,7 @@
             </button>
 
 
-            
+
             <!-- <form action="/logout" action="POST" class="logout">
               Logout
             </form> -->
@@ -103,10 +103,15 @@
               <h4 class="card-title">
                 Charts:
               </h4>
-              <img src="/static/weightchart.png" class="graph">
+              <meta charset="utf-8" />
+              <!-- import plugin script -->
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+            <!-- bar chart canvas element -->
+            <canvas id="myChart" width="600" height="400"></canvas>
+            <p id="caption">The chart is displaying a simple line chart.</p>
           </div>
         </div>
-      </div>
+    </div>
 
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
@@ -116,10 +121,10 @@
               </h4>
               <div class = "form-horizontal">
                 <form>
-                  
+
                   <div class="row">
                     <label class="control-label col-lg-4" for="height">
-                      Height 
+                      Height
                     </label>
                     <div class="col-lg-2">
                       <i> 5'5 </i>
@@ -128,7 +133,7 @@
 
                   <div class="row">
                     <label class="control-label col-lg-4" for="weight">
-                      Weight 
+                      Weight
                     </label>
                     <div class="col-lg-2">
                        <i> 145 lb </i>
@@ -137,7 +142,7 @@
 
                   <div class="row">
                     <label class="control-label col-lg-4" for="bp">
-                      Blood Pressure 
+                      Blood Pressure
                     </label>
                     <div class="col-lg-2">
                       <i> 120/90 </i>
@@ -146,7 +151,7 @@
 
                   <div class="row">
                     <label class="control-label col-lg-4" for="hr">
-                      Heart Rate 
+                      Heart Rate
                     </label>
                     <div class="col-lg-2">
                       <i> 80 bpm </i>
@@ -155,7 +160,7 @@
 
                   <div class="row">
                     <label class="control-label col-lg-4" for="bs">
-                      Blood Sugar 
+                      Blood Sugar
                     </label>
                     <div class="col-lg-2">
                       <i> 70 mg/dl <i>
@@ -189,3 +194,50 @@
   </body>
 
 </html>
+
+<script>
+// Global parameters:
+// do not resize the chart canvas when its container does (keep at 600x400px)
+Chart.defaults.global.responsive = false;
+
+// define the chart data
+var chartData = {
+  labels : [{% for item in labels %}
+             "{{item}}",
+            {% endfor %}],
+  datasets : [{
+      label: '{{ legend }}',
+      fill: true,
+      lineTension: 0.1,
+      backgroundColor: "rgba(75,192,192,0.4)",
+      borderColor: "rgba(75,192,192,1)",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "rgba(75,192,192,1)",
+      pointBackgroundColor: "#fff",
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data : [{% for item in values %}
+                {{item}},
+              {% endfor %}],
+      spanGaps: false
+  }]
+}
+
+// get chart canvas
+var ctx = document.getElementById("myChart").getContext("2d");
+
+// create the chart using the chart canvas
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: chartData,
+});
+
+</script>

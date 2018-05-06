@@ -4,13 +4,13 @@ import pymysql
 application = Flask(__name__)
 
 conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
-					   port = 3306,
-                       user='checkupdb',
-                       password='Strauss4life',
-                       db='checkupdb',
-                       charset='utf8mb4',
-                       cursorclass=pymysql.cursors.DictCursor
-                       )
+						port = 3306,
+						user='checkupdb',
+						password='Strauss4life',
+						db='checkupdb',
+						charset='utf8mb4',
+						cursorclass=pymysql.cursors.DictCursor
+						)
 
 @application.route('/')
 def start():
@@ -24,27 +24,27 @@ def start():
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
 def loginAuth():
-    # grabs information from the forms
-    username = request.form['username']
-    password = request.form['password']
-    user_id = request.form['user_id']
+	# grabs information from the forms
+	username = request.form['username']
+	password = request.form['password']
+	user_id = request.form['user_id']
 
-    # cursor used to send queries
-    cursor = conn.cursor()
-    # executes query
-    query = "INSERT INTO login_credentials VALUES (%s,%s,%s)"
-    cursor.execute(query, (username, password, user_id))
-    conn.commit()
+	# cursor used to send queries
+	cursor = conn.cursor()
+	# executes query
+	query = "INSERT INTO login_credentials VALUES (%s,%s,%s)"
+	cursor.execute(query, (username, password, user_id))
+	conn.commit()
 
-    cursor.close()
-    return redirect("/")
+	cursor.close()
+	return redirect("/")
 
 @application.route('/handle_upload', methods=['GET', 'POST'])
 def handle_upload():
 	# print("upload()")
 	userID = 1
 
-	#TODO: implement correct user ID 
+	#TODO: implement correct user ID
 
 
 	heightFT = request.form["height-ft"]
@@ -86,7 +86,7 @@ def handle_upload():
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
 	cursor.execute(query, (userID, bloodSugar, 4))
 	conn.commit()
-	
+
 	cursor.close()
 	return render_template('upload.html')
 
@@ -121,8 +121,28 @@ def processSignIn():
 
 @application.route('/graphs', methods=['GET', 'POST'])
 def graphs():
-    if request.method == 'GET':
-        return render_template('graphs.html')
+	if request.method == 'GET':
+		cursor = conn.cursor()
+		query = "SELECT data FROM data WHERE userID = 1 AND typeID = 3"
+		cursor.execute(query)
+		data = cursor.fetchall()
+		yValues = []
+		for j in data:
+			print(j['data'])
+			yValues.append(j['data'])
+		print()
+		cursor = conn.cursor()
+		query = "SELECT * FROM data WHERE userID = 1 AND typeID = 3"
+		cursor.execute(query)
+		data = cursor.fetchall()
+		xValues = []
+		for j in data:
+			xValues.append(j['‘date’'])
+			print(j['‘date’'])
+
+
+		legend = 'Data'
+		return render_template('graphs.html', values=yValues, labels=xValues, legend = legend)
 
 @application.route('/signup')
 def signup():
@@ -147,7 +167,7 @@ def handle_signup():
 	gender = "default"
 	password_match = True
 
-	
+
 	if (password != pass_conf):
 		password_match = False
 		#TODO: show an error if the passwords do not match
@@ -163,7 +183,7 @@ def handle_signup():
 
 	cursor.close()
 	return render_template('login.html', password_match = password_match)
-	
+
 
 @application.route('/files', methods=['GET', 'POST'])
 def files():
@@ -174,7 +194,7 @@ def files():
 def settings():
     if request.method == 'GET':
         return render_template('settings.html')
-            
+
 #Log out
 @application.route('/logout', methods = ['GET', 'POST'])
 def logout():

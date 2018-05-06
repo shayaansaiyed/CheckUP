@@ -6,7 +6,6 @@ application = Flask(__name__)
 conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
 					   port = 3306,
                        user='checkupdb',
-                       password='Strauss4life',
                        db='checkupdb',
                        charset='utf8mb4',
                        cursorclass=pymysql.cursors.DictCursor

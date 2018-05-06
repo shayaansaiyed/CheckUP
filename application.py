@@ -3,6 +3,8 @@ import pymysql
 
 application = Flask(__name__)
 
+application. config['UPLOAD_FOLDER'] = "./static/Documents"
+
 conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
 						port = 3306,
 						user='checkupdb',
@@ -38,6 +40,15 @@ def loginAuth():
 
 	cursor.close()
 	return redirect("/")
+
+# @application.route('/handle_file_upload', methods = ['GET', 'POST'])
+# def handle_file_upload():
+# 	filedesc = request.form["FileName"]
+# 	if request.method == 'POST':
+# 		document = request.files["inputFile"]
+# 		filename = secure_filename(document.filename)
+# 		document.save(os.path.join(app.config['UPLOAD_FOLDER'])
+
 
 @application.route('/handle_data_upload', methods=['GET', 'POST'])
 def handle_data_upload():
@@ -183,11 +194,19 @@ def handle_signup():
 	cursor.close()
 	return render_template('login.html', password_match = password_match)
 
-
 @application.route('/files', methods=['GET', 'POST'])
 def files():
-    if request.method == 'GET':
-        return render_template('files.html')
+	print("files()")
+	cur = conn.cursor()
+	cur.execute("SELECT docName FROM dataDoc")
+	data = cur.fetchall()
+	# print ("Data" + data)
+	return render_template('files.html', data=data)
+
+# @application.route('/files', methods=['GET', 'POST'])
+# def files():
+#     if request.method == 'GET':
+#         return render_template('files.html')
 
 @application.route('/settings', methods=['GET', 'POST'])
 def settings():

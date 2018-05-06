@@ -39,13 +39,12 @@ def loginAuth():
     cursor.close()
     return redirect("/")
 
-@application.route('/handle_upload', methods=['GET', 'POST'])
-def handle_upload():
+@application.route('/handle_data_upload', methods=['GET', 'POST'])
+def handle_data_upload():
 	# print("upload()")
 	userID = 1
 
 	#TODO: implement correct user ID 
-
 
 	heightFT = request.form["height-ft"]
 	heightIN = request.form["height-in"]

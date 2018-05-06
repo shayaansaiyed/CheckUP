@@ -65,21 +65,22 @@ def handle_signup():
 	firstname = request.form["first_name"]
 	lastname = request.form["last_name"]
 	email = request.form["email"]
+
+	#TODO: add hashing to password
 	password = request.form["password"]
 	pass_conf = request.form["password_confirmation"]
 
-	#temp values for until the front end is fixed
-	username = "default"
-	DOB = "00/00/00"
-	sex = "defualt"
+
+	username = request.form["username"]
+	DOB = request.form["DOB"]
+	sex = request.form["sex"]
 	gender = "default"
 	password_match = True
+
 	
 	if (password != pass_conf):
 		password_match = False
-		#do something
-		#prob need to pass in a variable "error" into 
-		#signin.html and have it make the user sign up again
+		#TODO: show an error if the passwords do not match
 
 	cursor = conn.cursor()
 	query = "INSERT INTO patient (firstName, lastName, email, dob, sex, gender) VALUES (%s,%s,%s,%s,%s,%s)"
@@ -91,7 +92,7 @@ def handle_signup():
 	conn.commit()
 
 	cursor.close()
-	return render_template('login.html')
+	return render_template('login.html', password_match = password_match)
 	
 
 @application.route('/files', methods=['GET', 'POST'])

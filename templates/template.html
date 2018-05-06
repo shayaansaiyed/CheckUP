@@ -43,21 +43,39 @@
 
 			<div class="menu">
 				<div class="icon">
-					<button class="btn input-class-level navButton">
-						<span class="uploadOrange">
-							<img src="/static/upload-orange.svg">
-						</span>
-					</button>
-				
-					<button class="btn input-class-level navButton"><span class="folderOrange"></span></button>
-				
-					<button class="btn input-class-level navButton"><span class="graphOrange"></span></button>
-				
-					<button class="btn input-class-level navButton"><span class="settingsOrange"></span></button>
-					
-					<form action="/logout" action="POST" class="logout">
-						Logout
-					</form>
+					<form action="/upload" method="GET">
+						<button class="btn input-class-level navButton">
+			              <!-- <span class="uploadOrange"> -->
+			                <img src="/static/upload-orange.svg" class="iconImg">
+			              <!-- </span> -->
+			            </button>
+			        </form> 
+
+			        <form action="/files" method="GET">
+			            <button class="btn input-class-level navButton">
+			             <!--  <span class="folderOrange"> -->
+			                <img src="/static/folder-orange.svg" class="iconImg">
+			              <!-- </span> -->
+			            </button>
+			        </form>
+
+			        <form action="/graphs" method="GET">
+			            <button class="btn input-class-level navButton" class="iconImg">
+			              <!-- <span class="graphOrange"> -->
+			                <img src="/static/graph-orange.svg" width="25px" height="25px">
+			              <!-- </span> -->
+			            </button>
+			        </form>
+			          
+			            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET">
+			              <span class="settingsOrange">
+			                <img src="/static/settings-orange.svg" width="25px" height="25px">
+			              </span>
+			            </button>
+
+			            <button class="btn logout" formaction="/logout" formmethod="POST">
+			              Log Out
+			            </button>
 				</div>
 			</div>
 				

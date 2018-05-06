@@ -55,6 +55,12 @@
   padding-right: 1vw;
  }
 
+ .iconImg {
+  float: center;
+  width" 25px;
+  height: 25px;
+ }
+
  span.uploadOrange{
   /* background: url(/upload-orange.svg) no-repeat center; */
   background-size: contain;

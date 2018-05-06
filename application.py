@@ -39,10 +39,61 @@ def loginAuth():
     cursor.close()
     return redirect("/")
 
+@application.route('/handle_upload', methods=['GET', 'POST'])
+def handle_upload():
+	# print("upload()")
+	userID = 1
+
+	#TODO: implement correct user ID 
+
+
+	heightFT = request.form["height-ft"]
+	heightIN = request.form["height-in"]
+	weight = request.form["weight"]
+	bloodPressure = request.form["bloodPressure"]
+	heartRate = request.form["heartRate"]
+	bloodSugar = request.form["bloodSugar"]
+
+	#TODO: fix height
+
+	#temp values for until the front end is fixed
+	# weight = "0.00"
+	# heightFT = "0.00"
+	# heightIN = "0.00"
+	# bloodSugar= "0.00"
+	# bloodPressure = "0.00"
+	# heartRate = "0.00"
+
+	#temp values for until the front end is fixe
+	cursor = conn.cursor()
+
+	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+	cursor.execute(query, (userID, weight, 0))
+	conn.commit()
+
+	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+	cursor.execute(query, (userID, heightFT, 1))
+	conn.commit()
+
+	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+	cursor.execute(query, (userID, heartRate, 2))
+	conn.commit()
+
+	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+	cursor.execute(query, (userID, bloodPressure, 3))
+	conn.commit()
+
+	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+	cursor.execute(query, (userID, bloodSugar, 4))
+	conn.commit()
+	
+	cursor.close()
+	return render_template('upload.html')
+
 @application.route('/upload', methods=['GET', 'POST'])
 def upload():
-    if request.method == 'GET':
-        return render_template('upload.html')
+	if request.method == 'GET':
+		return render_template('upload.html')
 
 @application.route('/signin', methods=['GET', 'POST'])
 def login():

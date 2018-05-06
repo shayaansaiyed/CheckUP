@@ -49,6 +49,25 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
 
+@application.route('/processSignIn', methods=['GET', 'POST'])
+def processSignIn():
+	email = request.form["inputEmail"]
+	password = request.form["inputPassword"]
+
+	cursor = conn.cursor()
+	query = "SELECT * FROM accounts WHERE userName = %s and userPass = %s"
+	cursor.execute(query, (email, password))
+	data = cursor.fetchone()
+	cursor.close()
+
+	error = None
+	if (data):
+		session['username'] = email
+		return redirect(url_for("graphs"))
+	else:
+		error = "The username and password are incorrect. Please try again."
+		return render_template('login.html', error = error)
+
 @application.route('/graphs', methods=['GET', 'POST'])
 def graphs():
     if request.method == 'GET':
@@ -71,7 +90,7 @@ def handle_signup():
 	pass_conf = request.form["password_confirmation"]
 
 
-	username = request.form["username"]
+	username = email
 	DOB = request.form["DOB"]
 	sex = request.form["sex"]
 	gender = "default"
@@ -112,7 +131,7 @@ def logout():
         return redirect(url_for('home'))
 
 
-
+application.secret_key = 'Yekaterina Petrovna Zamolodchikova, but you can call me Katya!'
 
 # run the app.
 if __name__ == "__main__":

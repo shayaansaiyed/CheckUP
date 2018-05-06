@@ -4,12 +4,6 @@ import pymysql
 application = Flask(__name__)
 
 conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
-					   port = 3306,
-                       user='checkupdb',
-                       db='checkupdb',
-                       charset='utf8mb4',
-                       cursorclass=pymysql.cursors.DictCursor
-                       )
 						port = 3306,
 						user='checkupdb',
 						password='Strauss4life',
@@ -30,21 +24,11 @@ def start():
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
 def loginAuth():
-    # grabs information from the forms
-    username = request.form['username']
-    password = request.form['password']
-    user_id = request.form['user_id']
 	# grabs information from the forms
 	username = request.form['username']
 	password = request.form['password']
 	user_id = request.form['user_id']
 
-    # cursor used to send queries
-    cursor = conn.cursor()
-    # executes query
-    query = "INSERT INTO login_credentials VALUES (%s,%s,%s)"
-    cursor.execute(query, (username, password, user_id))
-    conn.commit()
 	# cursor used to send queries
 	cursor = conn.cursor()
 	# executes query
@@ -52,8 +36,6 @@ def loginAuth():
 	cursor.execute(query, (username, password, user_id))
 	conn.commit()
 
-    cursor.close()
-    return redirect("/")
 	cursor.close()
 	return redirect("/")
 
@@ -62,7 +44,6 @@ def handle_data_upload():
 	# print("upload()")
 	userID = 1
 
-	#TODO: implement correct user ID 
 	#TODO: implement correct user ID
 
 	heightFT = request.form["height-ft"]
@@ -104,7 +85,6 @@ def handle_data_upload():
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
 	cursor.execute(query, (userID, bloodSugar, 4))
 	conn.commit()
-	
 
 	cursor.close()
 	return render_template('upload.html')
@@ -140,8 +120,6 @@ def processSignIn():
 
 @application.route('/graphs', methods=['GET', 'POST'])
 def graphs():
-    if request.method == 'GET':
-        return render_template('graphs.html')
 	if request.method == 'GET':
 		cursor = conn.cursor()
 		query = "SELECT data FROM data WHERE userID = 1 AND typeID = 3"
@@ -188,7 +166,6 @@ def handle_signup():
 	gender = "default"
 	password_match = True
 
-	
 
 	if (password != pass_conf):
 		password_match = False
@@ -205,7 +182,6 @@ def handle_signup():
 
 	cursor.close()
 	return render_template('login.html', password_match = password_match)
-	
 
 
 @application.route('/files', methods=['GET', 'POST'])
@@ -217,7 +193,6 @@ def files():
 def settings():
     if request.method == 'GET':
         return render_template('settings.html')
-            
 
 #Log out
 @application.route('/logout', methods = ['GET', 'POST'])

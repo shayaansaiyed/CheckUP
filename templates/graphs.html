@@ -46,17 +46,39 @@
 
         <div class="menu">
           <div class="icon">
-            <button class="btn input-class-level navButton" formaction="/upload" formmethod="GET"><span class="uploadOrange"></span></button>
+            <button class="btn input-class-level navButton" formaction="/upload" formmethod="GET">
+              <!-- <span class="uploadOrange"> -->
+                <img src="/static/upload-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
           
-            <button class="btn input-class-level navButton" formaction="/files" formmethod="GET"><span class="folderOrange"></span></button>
+            <button class="btn input-class-level navButton" formaction="/files" formmethod="GET">
+             <!--  <span class="folderOrange"> -->
+                <img src="/static/folder-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
           
-            <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET"><span class="graphOrange"></span></button>
+            <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET">
+              <!-- <span class="graphOrange"> -->
+                <img src="/static/graph-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
           
-            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET"><span class="settingsOrange"></span></button>
+            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET">
+              <span class="settingsOrange">
+                <img src="/static/settings-orange.svg" width="25px" height="25px">
+              </span>
+            </button>
+
+            <button class="btn logout" formaction="/logout" formmethod="POST">
+              Log Out
+            </button>
+
+
             
-            <form action="/logout" action="POST" class="logout">
+            <!-- <form action="/logout" action="POST" class="logout">
               Logout
-            </form>
+            </form> -->
           </div>
         </div>
       </div>

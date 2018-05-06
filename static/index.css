@@ -31,6 +31,8 @@
     cursor: pointer; /* Mouse pointer on hover */
     border: solid;
     border-color: #1b9988;
+    width: 25px;
+    height: 25px;
 }
 
 /* Darker background on mouse-over */
@@ -54,7 +56,7 @@
  }
 
  span.uploadOrange{
-  background: url(/upload-orange.svg) no-repeat center; 
+  /* background: url(/upload-orange.svg) no-repeat center; */
   background-size: contain;
   cursor: pointer;
   display: inline-block;
@@ -188,6 +190,7 @@
  .logout {
   border: solid;
   border-color: #1b9988;
+  background-color: #1b9988; 
   padding: 3px;
   display: inline-block;
   cursor: pointer;
@@ -195,6 +198,7 @@
   align-self: center;
   color: #ffffff;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
  }
 
  .logout:hover

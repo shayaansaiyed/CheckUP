@@ -44,7 +44,7 @@
 			<div class="menu">
 				<div class="icon">
 					<form action="/upload" method="GET">
-						<button class="btn input-class-level navButton">
+						<button type="submit" class="btn input-class-level navButton">
 			              <!-- <span class="uploadOrange"> -->
 			                <img src="/static/upload-orange.svg" class="iconImg">
 			              <!-- </span> -->
@@ -52,7 +52,7 @@
 			        </form> 
 
 			        <form action="/files" method="GET">
-			            <button class="btn input-class-level navButton">
+			            <button type="submit" class="btn input-class-level navButton">
 			             <!--  <span class="folderOrange"> -->
 			                <img src="/static/folder-orange.svg" class="iconImg">
 			              <!-- </span> -->
@@ -60,22 +60,26 @@
 			        </form>
 
 			        <form action="/graphs" method="GET">
-			            <button class="btn input-class-level navButton" class="iconImg">
+			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
 			              <!-- <span class="graphOrange"> -->
 			                <img src="/static/graph-orange.svg" width="25px" height="25px">
 			              <!-- </span> -->
 			            </button>
 			        </form>
-			          
-			            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET">
-			              <span class="settingsOrange">
-			                <img src="/static/settings-orange.svg" width="25px" height="25px">
-			              </span>
-			            </button>
 
-			            <button class="btn logout" formaction="/logout" formmethod="POST">
+			        <form action="/settings" method="GET">
+			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
+			              <!-- <span class="settingsOrange"> -->
+			                <img src="/static/settings-orange.svg" width="25px" height="25px">
+			              <!-- </span> -->
+			            </button>
+			        </form>
+
+			        <form action="logout" method="POST">
+			            <button type="submit" class="btn logout">
 			              Log Out
 			            </button>
+			        </form>
 				</div>
 			</div>
 				

@@ -137,8 +137,7 @@ def graphs():
 		data = cursor.fetchall()
 		xValues = []
 		for j in data:
-			xValues.append(j['‘date’'])
-			print(j['‘date’'])
+			print(j)
 
 
 		legend = 'Data'

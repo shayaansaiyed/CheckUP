@@ -82,6 +82,7 @@
                 Upload a document:
               </h4>
               <form>
+                <form role="form" action="/upload" method="POST">
                   <div class="form-horizontal">
                       <div class="form-upload-name">
                         <div class="row">
@@ -114,19 +115,19 @@
                 Or Enter Your Data:
               </h4>
               <div class = "form-horizontal">
-                <form>
+                <form action="handle_upload" method="POST">
                   <div class="row">
                     <label class="control-label col-lg-4" for="height">
                       Height 
                     </label>
                     <div class="col-lg-2 data-box">
-                        <input type="text" class="form-control" id="height-ft"  placeholder="0.00">
+                        <input type="text" name="height-ft" class="form-control" id="height-ft"  placeholder="0.00">
                     </div>
                       <label class="control-label col-lg-1" for="height-ft">
                         ft. 
                       </label>
                     <div class="col-lg-2 data-box">
-                      <input type="text" class="form-control" id="height-in"  placeholder="0.00">
+                      <input type="text" name="height-in" class="form-control" id="height-in"  placeholder="0.00">
                     </div>
                     <label class="control-label col-lg-1" for="height-in">
                       in. 
@@ -138,7 +139,7 @@
                       Weight 
                     </label>
                     <div class="col-lg-2 data-box">
-                      <input type="text" class="form-control" id="weight"  placeholder="0.00">
+                      <input type="text" name = "weight" class="form-control" id="weight"  placeholder="0.00">
                     </div>
                   </div>
 
@@ -147,7 +148,7 @@
                       Blood Pressure 
                     </label>
                     <div class="col-lg-2 data-box">
-                      <input type="text" class="form-control input-box" id="height"  placeholder="0.00">
+                      <input type="text" name = "bloodPressure" class="form-control input-box" id="bloodPressure"  placeholder="0.00">
                     </div>
                   </div>
 
@@ -156,7 +157,7 @@
                       Heart Rate 
                     </label>
                     <div class="col-lg-2 data-box">
-                      <input type="text" class="form-control input-box" id="hr"  placeholder="0.00">
+                      <input type="text" name = "heartRate"class="form-control input-box" id="hr"  placeholder="0.00">
                     </div>
                   </div>
 
@@ -165,7 +166,7 @@
                       Blood Sugar 
                     </label>
                     <div class="col-lg-2 data-box">
-                      <input type="text" class="form-control input-box" id="bs"  placeholder="0.00">
+                      <input type="text" name = "bloodSugar"class="form-control input-box" id="bs"  placeholder="0.00">
                     </div>
                   </div>
 

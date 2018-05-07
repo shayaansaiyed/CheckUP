@@ -194,15 +194,15 @@ def displayGraph():
 		cursor = conn.cursor()
 		query = "SELECT * FROM data WHERE userID = %s AND typeID = %s"
 		cursor.execute(query, (userID,typeID))
-		if(typeID == 0):
+		if(typeID == "0"):
 			title = "Height"
-		elif(typeID ==  1):
+		elif(typeID ==  "1"):
 			title = "Weight"
-		elif(typeID == 2):
+		elif(typeID == "2"):
 			title = "Blood Pressure"
-		elif(typeID == 3):
+		elif(typeID == "3"):
 			title = "Heart Rate"
-		elif(typeID == 4):
+		elif(typeID == "4"):
 			title = "Blood Sugar"
 		else:
 			title = "ERROR"

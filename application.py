@@ -51,7 +51,7 @@ def loginAuth():
 
 @application.route('/handle_file_upload', methods = ['GET', 'POST'])
 def handle_file_upload():
-	userID = 1
+	userID = session["username"]
 	filedesc = request.form["FileName"]
 
 	document = request.files["inputFile"]
@@ -72,7 +72,7 @@ def handle_file_upload():
 @application.route('/handle_data_upload', methods=['GET', 'POST'])
 def handle_data_upload():
 	# print("upload()")
-	userID = 1
+	userID = session["username"]
 
 	#TODO: implement correct user ID
 
@@ -97,23 +97,23 @@ def handle_data_upload():
 	cursor = conn.cursor()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (userID, weight, 0))
+	cursor.execute(query, (str(userID), weight, 0))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (userID, heightFT, 1))
+	cursor.execute(query, (str(userID), heightFT, 1))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (userID, heartRate, 2))
+	cursor.execute(query, (str(userID), heartRate, 2))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (userID, bloodPressure, 3))
+	cursor.execute(query, (str(userID), bloodPressure, 3))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (userID, bloodSugar, 4))
+	cursor.execute(query, (str(userID), bloodSugar, 4))
 	conn.commit()
 
 	cursor.close()
@@ -122,8 +122,9 @@ def handle_data_upload():
 @application.route('/account', methods=['GET', 'POST'])
 def account():
 	cursor = conn.cursor()
-	query = "SELECT * FROM patient WHERE userID = 1"
-	cursor.execute(query)
+	userID = session["username"]
+	query = "SELECT * FROM patient WHERE userID = %s"
+	cursor.execute(query, (str(userID)))
 	data = cursor.fetchall()
 	firstName = data[0]['firstName']
 	lastName = data[0]['lastName']
@@ -199,7 +200,6 @@ def signup():
 
 @application.route('/handle_signup', methods=['GET', 'POST'])
 def handle_signup():
-	print ("handle_signup()")
 	firstname = request.form["first_name"]
 	lastname = request.form["last_name"]
 	email = request.form["email"]

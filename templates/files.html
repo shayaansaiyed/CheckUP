@@ -99,7 +99,7 @@
             </h1>
             
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                <div class="col-lg-12 meddocument">
                         <div class="card-body">
                             <h4 class="card-title">
 
@@ -107,8 +107,11 @@
                                 <div class = "row">
                                   <tr>
                                     <td>
-                                        <a download href="static/Documents/{{file.docName}}">
-                                        {{file.docTitle}} </a>
+                                    <a download href="static/Documents/{{file.docName}}">
+                                        
+                                        <td>{{file.docTitle}}</td>
+                                        <td>{{file.date}}</td> 
+                                    </a>
                                     </td>
                                   </tr>
                                 </div>

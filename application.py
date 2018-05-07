@@ -27,8 +27,11 @@ conn = pymysql.connect(host='localhost',
 @application.route('/')
 def home():
 	print (str(session))
-	if session["username"]:
-		return redirect("/graphs")
+	# if session["username"]:
+	if session:
+		if session["username"]:
+			return redirect("/graphs")
+		return redirect("/start")
 	else:
 		return redirect("/start")
 
@@ -172,13 +175,17 @@ def processSignIn():
 		error = "The username and password are incorrect. Please try again."
 		return render_template('login.html', error = error)
 
-@application.route('/graphs', methods=['GET', 'POST'])
-def graphs():
+
+@application.route('/displayGraph', methods=['GET', 'POST'])
+def displayGraph():
 	userID = session["username"]
-	if request.method == 'GET':
+	if request.method == 'POST':
+		typeID = request.form['typeID'];
+		if(typeID is None):
+			return redirect('/graphs')
 		cursor = conn.cursor()
 		query = "SELECT data FROM data WHERE userID = %s AND typeID = %s"
-		cursor.execute(query, (userID,str(3)))
+		cursor.execute(query, (userID,typeID))
 		data = cursor.fetchall()
 		yValues = []
 		for j in data:
@@ -186,7 +193,20 @@ def graphs():
 		print()
 		cursor = conn.cursor()
 		query = "SELECT * FROM data WHERE userID = %s AND typeID = %s"
-		cursor.execute(query, (userID,str(3)))
+		cursor.execute(query, (userID,typeID))
+		if(typeID == 0):
+			title = "Height"
+		elif(typeID ==  1):
+			title = "Weight"
+		elif(typeID == 2):
+			title = "Blood Pressure"
+		elif(typeID == 3):
+			title = "Heart Rate"
+		elif(typeID == 4):
+			title = "Blood Sugar"
+		else:
+			title = "ERROR"
+
 		data = cursor.fetchall()
 		xValues = []
 		for j in data:
@@ -196,7 +216,34 @@ def graphs():
 
 
 		legend = 'Data'
-		return render_template('graphs.html', values=yValues, labels=xValues, legend = legend)
+		return render_template('graphs.html', values=yValues, labels=xValues, legend = legend, title = title)
+
+@application.route('/graphs', methods=['GET', 'POST'])
+def graphs(typeID=0):
+	userID = session["username"]
+	if request.method == 'GET':
+		cursor = conn.cursor()
+		query = "SELECT data FROM data WHERE userID = %s AND typeID = %s"
+		cursor.execute(query, (userID,str(0)))
+		data = cursor.fetchall()
+		yValues = []
+		for j in data:
+			yValues.append(j['data'])
+		print()
+		cursor = conn.cursor()
+		query = "SELECT * FROM data WHERE userID = %s AND typeID = %s"
+		cursor.execute(query, (userID,str(0)))
+		title = "Height"
+		data = cursor.fetchall()
+		xValues = []
+		for j in data:
+			date = str(j['date']).split()[0]
+			xValues.append(date)
+			print(j['date'])
+
+
+		legend = 'Data'
+		return render_template('graphs.html', values=yValues, labels=xValues, legend = legend, title = title)
 
 @application.route('/signup', methods=['GET', 'POST'])
 def signup():

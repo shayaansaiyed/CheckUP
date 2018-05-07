@@ -105,6 +105,11 @@
   align-self: center;
  }
 
+/* Labels */
+.control-data {
+  padding-top: 7px;
+}
+
 /* Login */
  .login {
   display: inline-block;
@@ -309,7 +314,8 @@
 }
 
 .completebutton-graph {
-  background-color: #eb5501; /* orange background */
+  margin: 2vw;
+  background-color: #eb5501; 
   color: white; /* White text */
   cursor: pointer; /* Mouse pointer on hover */
   border: solid;
@@ -321,7 +327,8 @@
 /* Darker background on mouse-over */
 .completebutton-graph:hover {
   background-color: white; /* White background */
-  color: #eb5501;
+  border: none; /* Remove borders */
+  color: #eb5501; /* White text */
   cursor: pointer; /* Mouse pointer on hover */
   border: solid;
   border-color: #eb5501;
@@ -348,8 +355,7 @@
 
 .uploadbutton {
   margin: 2vw;
-  background-color: #eb5501; /* White background */
-  border: none; /* Remove borders */
+  background-color: #eb5501; 
   color: white; /* White text */
   cursor: pointer; /* Mouse pointer on hover */
   border: solid;
@@ -385,6 +391,16 @@
 
 /* Account */
 .container-account {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}
+
+/* Files */
+.container-files {
   padding: 5vw;
   padding-top: 8vw;
   float: center;

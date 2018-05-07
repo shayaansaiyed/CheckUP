@@ -27,7 +27,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
-    <link href="../index.css" rel="stylesheet">
+    <link href="/static/index.css" rel="stylesheet">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
@@ -43,7 +43,7 @@
 
 			<div class="menu">
 				<div class="icon">
-					<form action="/upload" method="GET">
+					<form action="/upload" method="GET" class="navForm">
 						<button type="submit" class="btn input-class-level navButton">
 			              <!-- <span class="uploadOrange"> -->
 			                <img src="/static/upload-orange.svg" class="iconImg">
@@ -51,31 +51,31 @@
 			            </button>
 			        </form> 
 
-			        <form action="/files" method="GET">
+			        <form action="/files" method="GET" class="navForm">
 			            <button type="submit" class="btn input-class-level navButton">
 			             <!--  <span class="folderOrange"> -->
-			                <img src="/static/folder-orange.svg" class="iconImg">
+			                <img src="/static/folder-orange.svg" class="iconImg" ">
 			              <!-- </span> -->
 			            </button>
 			        </form>
 
-			        <form action="/graphs" method="GET">
+			        <form action="/graphs" method="GET" class="navForm">
 			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
 			              <!-- <span class="graphOrange"> -->
-			                <img src="/static/graph-orange.svg" width="25px" height="25px">
+			                <img src="/static/graph-orange.svg" class="iconImg">
 			              <!-- </span> -->
 			            </button>
 			        </form>
 
-			        <form action="/settings" method="GET">
+			        <form action="/settings" method="GET" class="navForm">
 			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
 			              <!-- <span class="settingsOrange"> -->
-			                <img src="/static/settings-orange.svg" width="25px" height="25px">
+			                <img src="/static/settings-orange.svg" class="iconImg">
 			              <!-- </span> -->
 			            </button>
 			        </form>
 
-			        <form action="logout" method="POST">
+			        <form action="logout" method="POST" class="navForm">
 			            <button type="submit" class="btn logout">
 			              Log Out
 			            </button>

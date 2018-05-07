@@ -12,15 +12,19 @@ conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com
 						cursorclass=pymysql.cursors.DictCursor
 						)
 
+##@application.route('/')
+##def start():
+##	cursor = conn.cursor()
+##	query = "SELECT * FROM login_credentials"
+##	cursor.execute(query)
+##	data = cursor.fetchall()
+##	print (data)
+##	cursor.close()
+##	return render_template("index.html", data = data)
+
 @application.route('/')
 def start():
-	cursor = conn.cursor()
-	query = "SELECT * FROM login_credentials"
-	cursor.execute(query)
-	data = cursor.fetchall()
-	print (data)
-	cursor.close()
-	return render_template("index.html", data = data)
+        return render_template("template.html")
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
 def loginAuth():

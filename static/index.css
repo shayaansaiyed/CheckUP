@@ -61,6 +61,10 @@
   height: 25px;
  }
 
+ form.navBar {
+  display: inline-block;
+ }
+
  span.uploadOrange{
   /* background: url(/upload-orange.svg) no-repeat center; */
   background-size: contain;

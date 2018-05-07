@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+       <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+                                
+                                <!-- Custom styles for this template -->
+        <link href="/static/index.css" rel="stylesheet">
+                                
+    </head>
+    
+    <body>
+        
+        <!-- Uncomment this if the nav bar covers the heading -->
+<!--         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> -->
+            
+<!--         </nav> -->
+        
+        <!-- Page Content -->
+        <div class="container">
+            
+            <!-- Page Heading -->
+            <h1 class="my-4">Your Files:
+            </h1>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/hold.jpg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Chemotherapy bill Feb
+                            </h4>
+                            4/29/2018
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/docimage1.jpeg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Prescription
+                            </h4>
+                            3/18/2018
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/docimage2.jpeg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Waiver
+                            </h4>
+                            3/05/2018
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/docimage3.jpeg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Physical
+                            </h4>
+                            2/16/2018
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/docimage4.jpeg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Chemotherapy bill Jan
+                            </h4>
+                            2/02/2018
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top meddoc" src="/static/docimage5.jpeg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Bill
+                            </h4>
+                            1/13/2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+        <!-- /.container -->
+        
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        
+    </body>
+    
+</html>

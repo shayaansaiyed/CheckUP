@@ -81,8 +81,7 @@
               <h4 class="card-title">
                 Upload a document:
               </h4>
-              <form>
-                <form role="form" action="/handle_file_upload" method="POST">
+                <form role="form" action="/handle_file_upload" method="POST" enctype="multipart/form-data">
                   <div class="form-horizontal">
                       <div class="form-upload-name">
                         <div class="row">
@@ -93,12 +92,12 @@
                           <input type="text" class="form-control" id="FileName" name="FileName" aria-describedby="emailHelp" placeholder="File Name">
                       </div>
                       <div class="form-upload-btn">
-                          <input type="file" class="form-control-file" id="inputFile" name = "inputFile" aria-describedby="fileHelp">
+                          <input type="file" class="form-control-file" id="inputFile" name="inputFile" aria-describedby="fileHelp">
                       </div>
                       <div class="row">
                         <div class="center-block">
                           <div class="col-lg-3">
-                            <button class="btn btn-lg uploadbutton"> Upload </button>
+                            <button class="btn btn-lg uploadbutton" type="Submit"> Upload </button>
                           </div>
                         </div>
                       </div>

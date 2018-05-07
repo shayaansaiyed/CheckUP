@@ -3,7 +3,7 @@ import pymysql
 
 application = Flask(__name__)
 
-application. config['UPLOAD_FOLDER'] = "./static/Documents"
+application.config['UPLOAD_FOLDER'] = "./static/Documents/"
 
 conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
 						port = 3306,
@@ -14,15 +14,23 @@ conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com
 						cursorclass=pymysql.cursors.DictCursor
 						)
 
+# @application.route('/')
+# def start():
+# 	cursor = conn.cursor()
+# 	query = "SELECT * FROM login_credentials"
+# 	cursor.execute(query)
+# 	data = cursor.fetchall()
+# 	print (data)
+# 	cursor.close()
+# 	return render_template("index.html", data = data)
+
 @application.route('/')
 def start():
-	cursor = conn.cursor()
-	query = "SELECT * FROM login_credentials"
-	cursor.execute(query)
-	data = cursor.fetchall()
-	print (data)
-	cursor.close()
-	return render_template("index.html", data = data)
+	return render_template("template.html")
+
+@application.route('/home')
+def home():
+	return render_template("index.html")
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
 def loginAuth():
@@ -41,13 +49,24 @@ def loginAuth():
 	cursor.close()
 	return redirect("/")
 
-# @application.route('/handle_file_upload', methods = ['GET', 'POST'])
-# def handle_file_upload():
-# 	filedesc = request.form["FileName"]
-# 	if request.method == 'POST':
-# 		document = request.files["inputFile"]
-# 		filename = secure_filename(document.filename)
-# 		document.save(os.path.join(app.config['UPLOAD_FOLDER'])
+@application.route('/handle_file_upload', methods = ['GET', 'POST'])
+def handle_file_upload():
+	userID = 1
+	filedesc = request.form["FileName"]
+
+	document = request.files["inputFile"]
+	filename = document.filename
+	print (application.config['UPLOAD_FOLDER'] + filename)
+
+	document.save(application.config['UPLOAD_FOLDER'] + filename)
+
+	cursor = conn.cursor()
+	query = "INSERT INTO documents (userID, docTitle, docName) VALUES (%s, %s, %s)"
+	cursor.execute(query, (str(userID), filedesc, filename))
+	conn.commit()
+
+	cursor.close()
+	return redirect("/upload")
 
 
 @application.route('/handle_data_upload', methods=['GET', 'POST'])
@@ -100,6 +119,21 @@ def handle_data_upload():
 	cursor.close()
 	return render_template('upload.html')
 
+@application.route('/account', methods=['GET', 'POST'])
+def account():
+	cursor = conn.cursor()
+	query = "SELECT * FROM patient WHERE userID = 1"
+	cursor.execute(query)
+	data = cursor.fetchall()
+	firstName = data[0]['firstName']
+	lastName = data[0]['lastName']
+	email = data[0]['email']
+	dob = data[0]['dob']
+	sex = data[0]['sex']
+	gender = data[0]['gender']
+	hcpID = data[0]['hcpID']
+	return render_template('accounts.html', firstName = firstName, lastName = lastName, email = email, dob = dob, sex = sex, gender = gender, hcpID = hcpID)
+
 @application.route('/upload', methods=['GET', 'POST'])
 def upload():
 	if request.method == 'GET':
@@ -123,7 +157,11 @@ def processSignIn():
 
 	error = None
 	if (data):
-		session['username'] = email
+		cursor = conn.cursor()
+		query = "SELECT userID FROM accounts WHERE userName=%s"
+		cursor.execute(query, (email))
+		data = cursor.fetchone()
+		session["username"] = data['userID']
 		return redirect(url_for("graphs"))
 	else:
 		error = "The username and password are incorrect. Please try again."
@@ -177,10 +215,23 @@ def handle_signup():
 	gender = "default"
 	password_match = True
 
-
 	if (password != pass_conf):
 		password_match = False
-		#TODO: show an error if the passwords do not match
+		error = "Passwords do not match."
+		return render_template('signup.html', error = error)
+
+	cursor = conn.cursor()
+	query = "SELECT * FROM accounts WHERE userName = %s"
+	cursor.execute(query, (email))
+	data = cursor.fetchone()
+	cursor.close()
+
+	error = None
+	if (not data):
+		return redirect(url_for("login"))
+	else:
+		error = "An account for this email is already active."
+		return render_template('signup.html', error = error)
 
 	cursor = conn.cursor()
 	query = "INSERT INTO patient (firstName, lastName, email, dob, sex, gender) VALUES (%s,%s,%s,%s,%s,%s)"
@@ -196,17 +247,12 @@ def handle_signup():
 
 @application.route('/files', methods=['GET', 'POST'])
 def files():
-	print("files()")
 	cur = conn.cursor()
-	cur.execute("SELECT docName FROM dataDoc")
+	cur.execute("SELECT docName FROM documents")
 	data = cur.fetchall()
 	# print ("Data" + data)
 	return render_template('files.html', data=data)
 
-# @application.route('/files', methods=['GET', 'POST'])
-# def files():
-#     if request.method == 'GET':
-#         return render_template('files.html')
 
 @application.route('/settings', methods=['GET', 'POST'])
 def settings():

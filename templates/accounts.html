@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/index.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
+
+    <title>CheckUP - Graphs</title>
+
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="nav">
+        <div class="logoDiv">
+          <a href="index.html"><img src="/static/checkUp-logo-small.png" class="logo"></a>
+        </div>
+
+        <div class="menu">
+          <div class="icon">
+            <button class="btn input-class-level navButton" formaction="/upload" formmethod="GET">
+              <!-- <span class="uploadOrange"> -->
+                <img src="/static/upload-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
+
+            <button class="btn input-class-level navButton" formaction="/files" formmethod="GET">
+             <!--  <span class="folderOrange"> -->
+                <img src="/static/folder-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
+
+            <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET">
+              <!-- <span class="graphOrange"> -->
+                <img src="/static/graph-orange.svg" width="25px" height="25px">
+              <!-- </span> -->
+            </button>
+
+            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET">
+              <span class="settingsOrange">
+                <img src="/static/settings-orange.svg" width="25px" height="25px">
+              </span>
+            </button>
+
+            <button class="btn logout" formaction="/logout" formmethod="POST">
+              Log Out
+            </button>
+
+
+
+            <!-- <form action="/logout" action="POST" class="logout">
+              Logout
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<br><br><br><br><br><br><br>
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title">
+                Your Account Summary:
+              </h4>
+              <div class = "form-horizontal">
+                <form>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="height">
+                      First Name
+                    </label>
+                    <div class="col-lg-2">
+                      <i> {{firstName}} </i>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="weight">
+                      Last Name
+                    </label>
+                    <div class="col-lg-2">
+                       <i> {{lastName}} </i>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="bp">
+                      Email
+                    </label>
+                    <div class="col-lg-2">
+                      <i>{{email}}</i>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="hr">
+                      Birthday
+                    </label>
+                    <div class="col-lg-2">
+                      <i> {{dob}} </i>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-lg-4" for="bs">
+                      Sex
+                    </label>
+                    <div class="col-lg-2">
+                      <i> {{sex}} <i>
+
+                    </div>
+                  </div>
+
+				  <div class="row">
+                    <label class="control-label col-lg-4" for="bs">
+                      Gender
+                    </label>
+                    <div class="col-lg-2">
+                      <i> {{gender}} <i>
+
+                    </div>
+                  </div>
+
+				  <div class="row">
+                    <label class="control-label col-lg-4" for="bs">
+                      HCPID
+                    </label>
+                    <div class="col-lg-2">
+                      <i> {{hcpID}} <i>
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="center-block">
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
+
+<script>
+// Global parameters:
+// do not resize the chart canvas when its container does (keep at 600x400px)
+Chart.defaults.global.responsive = false;

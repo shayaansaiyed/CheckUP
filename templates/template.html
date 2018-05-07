@@ -27,7 +27,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
-    <link href="../index.css" rel="stylesheet">
+    <link href="/static/index.css" rel="stylesheet">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
@@ -38,43 +38,51 @@
 	<div class="header">
 		<div class="nav">
 			<div class="logoDiv">
-				<a href="index.html"><img src="svg/checkUp-logo-small.png" class="logo"></a>
+				<a href="{{url_for('home')}}"><img src="/checkUp-logo-small.png" class="logo"></a>
 			</div>
 
 			<div class="menu">
 				<div class="icon">
-					<button class="btn input-class-level navButton">
-						<span class="uploadOrange">
-							<img src="/static/upload-orange.svg">
-						</span>
-					</button>
-				
-					<button class="btn input-class-level navButton"><span class="folderOrange"></span></button>
-				
-					<button class="btn input-class-level navButton"><span class="graphOrange"></span></button>
-				
-					<button class="btn input-class-level navButton"><span class="settingsOrange"></span></button>
-					
-					<form action="/logout" action="POST" class="logout">
-						Logout
-					</form>
+					<form action="/upload" method="GET" class="navForm">
+						<button type="submit" class="btn input-class-level navButton">
+			              <!-- <span class="uploadOrange"> -->
+			                <img src="/static/upload-orange.svg" class="iconImg">
+			              <!-- </span> -->
+			            </button>
+			        </form> 
+
+			        <form action="/files" method="GET" class="navForm">
+			            <button type="submit" class="btn input-class-level navButton">
+			             <!--  <span class="folderOrange"> -->
+			                <img src="/static/folder-orange.svg" class="iconImg" >
+			              <!-- </span> -->
+			            </button>
+			        </form>
+			        <form action="/graphs" method="GET" class="navForm">
+			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
+			              <!-- <span class="graphOrange"> -->
+			                <img src="/static/graph-orange.svg" class="iconImg">
+			              <!-- </span> -->
+			            </button>
+			        </form>
+			        <form action="/account" method="GET" class="navForm">
+			            <button type="submit" class="btn input-class-level navButton" class="iconImg">
+			              <!-- <span class="settingsOrange"> -->
+			                <img src="/static/settings-orange.svg" class="iconImg">
+			              <!-- </span> -->
+			            </button>
+			        </form>
+			        <form action="logout" method="POST" class="navForm">
+			            <button type="submit" class="btn logout">
+			              Log Out
+			            </button>
+			        </form>
 				</div>
 			</div>
 				
 		</div>
 	</div>
-
 	
-
-
-
-
-
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -84,7 +84,6 @@ def handle_data_upload():
 
 	#TODO: implement correct user ID
 
-	heightFT = request.form["height-ft"]
 	heightIN = request.form["height-in"]
 	weight = request.form["weight"]
 	bloodPressure = request.form["bloodPressure"]
@@ -105,11 +104,11 @@ def handle_data_upload():
 	cursor = conn.cursor()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), weight, 0))
+	cursor.execute(query, (str(userID), weight, 1))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), heightFT, 1))
+	cursor.execute(query, (str(userID), heightIN, 0))
 	conn.commit()
 
 	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
@@ -181,6 +180,7 @@ def displayGraph():
 	userID = session["username"]
 	if request.method == 'POST':
 		typeID = request.form['typeID'];
+		print("typeID: " + typeID)
 		if(typeID is None):
 			return redirect('/graphs')
 		cursor = conn.cursor()

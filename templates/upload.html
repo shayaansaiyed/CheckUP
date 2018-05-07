@@ -39,27 +39,50 @@
 
   <body>
     <div class="header">
-      <div class="nav">
-        <div class="logoDiv">
-          <a href="index.html"><img src="../svg/checkUp-logo-small.png" class="logo"></a>
-        </div>
+    <div class="nav">
+      <div class="logoDiv">
+        <a href="{{url_for('home')}}"><img src="/checkUp-logo-small.png" class="logo"></a>
+      </div>
 
-        <div class="menu">
-          <div class="icon">
-            <button class="btn input-class-level navButton" formaction="/upload" formmethod="GET"><span class="uploadOrange"></span></button>
-          
-            <button class="btn input-class-level navButton" formaction="/files" formmethod="GET"><span class="folderOrange"></span></button>
-          
-            <button class="btn input-class-level navButton" formaction="/graphs" formmethod="GET"><span class="graphOrange"></span></button>
-          
-            <button class="btn input-class-level navButton" formaction="/settings" formmethod="GET"><span class="settingsOrange"></span></button>
-            
-            <form action="/logout" action="POST" class="logout">
-              Logout
-            </form>
-          </div>
+      <div class="menu">
+        <div class="icon">
+          <form action="/upload" method="GET" class="navForm">
+            <button type="submit" class="btn input-class-level navButton">
+                    <!-- <span class="uploadOrange"> -->
+                      <img src="/static/upload-orange.svg" class="iconImg">
+                    <!-- </span> -->
+                  </button>
+              </form> 
+
+              <form action="/files" method="GET" class="navForm">
+                  <button type="submit" class="btn input-class-level navButton">
+                   <!--  <span class="folderOrange"> -->
+                      <img src="/static/folder-orange.svg" class="iconImg" >
+                    <!-- </span> -->
+                  </button>
+              </form>
+              <form action="/graphs" method="GET" class="navForm">
+                  <button type="submit" class="btn input-class-level navButton" class="iconImg">
+                    <!-- <span class="graphOrange"> -->
+                      <img src="/static/graph-orange.svg" class="iconImg">
+                    <!-- </span> -->
+                  </button>
+              </form>
+              <form action="/account" method="GET" class="navForm">
+                  <button type="submit" class="btn input-class-level navButton" class="iconImg">
+                    <!-- <span class="settingsOrange"> -->
+                      <img src="/static/settings-orange.svg" class="iconImg">
+                    <!-- </span> -->
+                  </button>
+              </form>
+              <form action="logout" method="POST" class="navForm">
+                  <button type="submit" class="btn logout">
+                    Log Out
+                  </button>
+              </form>
         </div>
       </div>
+        
     </div>
       
     <!-- Page Content -->

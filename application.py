@@ -25,12 +25,15 @@ conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com
 # 	return render_template("index.html", data = data)
 
 @application.route('/')
-def start():
-	return render_template("template.html")
-
-@application.route('/home')
 def home():
-	return render_template("index.html")
+	if (session):
+		return redirect("/graphs")
+	else:
+		return redirect("/start")
+
+@application.route('/start')
+def start():
+	return render_template("index 2.html")
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
 def loginAuth():

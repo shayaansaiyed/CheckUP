@@ -389,6 +389,11 @@
   margin-top: 5px;
 }
 
+.uploadLabel {
+  text-align: left;
+  padding-top: 7px;
+}
+
 /* Account */
 .container-account {
   padding: 5vw;

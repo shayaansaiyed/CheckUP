@@ -31,22 +31,21 @@
         
         <!-- Uncomment this if the nav bar covers the heading -->
 <!--         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> -->
-            <div class="header">
-        <div class="nav">
-            <div class="logoDiv">
-                <a href="{{url_for('home')}}"><img src="/static/checkUp-logo-small.png" class="logo"></a>
-            </div>
+    <div class="header">
+      <div class="nav">
+        <div class="logoDiv">
+          <a href="{{url_for('home')}}"><img src="/static/checkUp-logo-small.png" class="logo"></a>
+        </div>
 
-            <div class="menu">
-                <div class="icon">
-                    <form action="/upload" method="GET" class="navForm">
-                        <button type="submit" class="btn input-class-level navButton">
-                          <!-- <span class="uploadOrange"> -->
-                            <img src="/static/upload-orange.svg" class="iconImg">
-                          <!-- </span> -->
-                        </button>
-                    </form> 
-
+        <div class="menu">
+          <div class="icon">
+            <form action="/upload" method="GET" class="navForm">
+              <button type="submit" class="btn input-class-level navButton">
+                      <!-- <span class="uploadOrange"> -->
+                        <img src="/static/upload-orange.svg" class="iconImg">
+                      <!-- </span> -->
+                    </button>
+                </form> 
                     <form action="/files" method="GET" class="navForm">
                         <button type="submit" class="btn input-class-level navButton">
                          <!--  <span class="folderOrange"> -->
@@ -77,6 +76,7 @@
             </div>
                 
         </div>
+    </div>
 <!--         </nav> -->
         
         <!-- Page Content -->
@@ -85,20 +85,25 @@
             <!-- Page Heading -->
             <h1 class="my-4">Your Files:
             </h1>
+
+            <h1 class="my-4">Your Files:
+            </h1>
             
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6 meddocument">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top meddoc" src="/static/hold.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
 
 							{% for docName in data %}
-                              <tr>
-                                  <td>{{docName.docName}}</td>
-                          <!--         <td>{{docName[1]}}</td> -->
-                              </tr>
-                              {% endfor %}                            
+                                <div class = "row">
+                                  <tr>
+                                    <td>
+                                        {{docName.docTitle}}
+                                    </td>
+                                  </tr>
+                                </div>
+                            {% endfor %}                            
                           </h4>
 
                         </div>

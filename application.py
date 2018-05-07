@@ -5,10 +5,10 @@ application = Flask(__name__)
 
 application.config['UPLOAD_FOLDER'] = "./static/Documents/"
 
-conn = pymysql.connect(host='dbinstance.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
+conn = pymysql.connect(host='localhost',
 						port = 3306,
 						user='checkupdb',
-						password='Strauss4life',
+						# password='Strauss4life',
 						db='checkupdb',
 						charset='utf8mb4',
 						cursorclass=pymysql.cursors.DictCursor
@@ -143,10 +143,9 @@ def upload():
 	if request.method == 'GET':
 		return render_template('upload.html')
 
-@application.route('/signin', methods=['GET', 'POST'])
+@application.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'GET':
-        return render_template('login.html')
+    return render_template('login.html')
 
 @application.route('/processSignIn', methods=['GET', 'POST'])
 def processSignIn():
@@ -180,7 +179,6 @@ def graphs():
 		data = cursor.fetchall()
 		yValues = []
 		for j in data:
-			print(j['data'])
 			yValues.append(j['data'])
 		print()
 		cursor = conn.cursor()
@@ -189,14 +187,15 @@ def graphs():
 		data = cursor.fetchall()
 		xValues = []
 		for j in data:
-			xValues.append(j['‘date’'])
-			print(j['‘date’'])
+			date = str(j['date']).split()[0]
+			xValues.append(date)
+			print(j['date'])
 
 
 		legend = 'Data'
 		return render_template('graphs.html', values=yValues, labels=xValues, legend = legend)
 
-@application.route('/signup')
+@application.route('/signup', methods=['GET', 'POST'])
 def signup():
 	print ("signup()")
 	return render_template('signup.html')
@@ -230,9 +229,7 @@ def handle_signup():
 	cursor.close()
 
 	error = None
-	if (not data):
-		return redirect(url_for("login"))
-	else:
+	if (data):
 		error = "An account for this email is already active."
 		return render_template('signup.html', error = error)
 
@@ -251,7 +248,7 @@ def handle_signup():
 @application.route('/files', methods=['GET', 'POST'])
 def files():
 	cur = conn.cursor()
-	cur.execute("SELECT docName FROM documents")
+	cur.execute("SELECT * FROM documents")
 	data = cur.fetchall()
 	# print ("Data" + data)
 	return render_template('files.html', data=data)

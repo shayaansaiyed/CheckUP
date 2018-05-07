@@ -382,3 +382,13 @@
 .input-box {
   margin-top: 5px;
 }
+
+/* Account */
+.container-account {
+  padding: 5vw;
+  padding-top: 8vw;
+  float: center;
+  display: inline-block;
+  align-self: center;
+  width: 100%;
+}

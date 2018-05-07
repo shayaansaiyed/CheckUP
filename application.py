@@ -26,13 +26,15 @@ conn = pymysql.connect(host='localhost',
 
 @application.route('/')
 def home():
-	if (session):
+	print (str(session))
+	if session["username"]:
 		return redirect("/graphs")
 	else:
 		return redirect("/start")
 
 @application.route('/start')
 def start():
+	session["username"] = None
 	return render_template("index 2.html")
 
 @application.route('/loginAuth', methods=['GET', 'POST'])
@@ -263,10 +265,16 @@ def settings():
         return render_template('settings.html')
 
 #Log out
+# @application.route('/logout', methods = ['GET', 'POST'])
+# def logout():
+#     if request.method == 'GET':
+#         return redirect(url_for('home'))
+
 @application.route('/logout', methods = ['GET', 'POST'])
 def logout():
-    if request.method == 'GET':
-        return redirect(url_for('home'))
+    session.clear()
+    # session['username'] = None
+    return redirect("/start")
 
 
 application.secret_key = 'Yekaterina Petrovna Zamolodchikova, but you can call me Katya!'

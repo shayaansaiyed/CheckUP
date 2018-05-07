@@ -42,13 +42,15 @@
     <div class="header">
         <div class="nav">
             <div class="logoDiv">
-                <a href="index.html"><img src="/static/checkUp-logo-small.png" class="logo"></a>
+                <a href="{{url_for('home')}}"><img src="/static/checkUp-logo-small.png" class="logo"></a>
             </div>
 
             <div class="menu">
                 <div class="icon">
-                    <form action="/signup" action="POST" class="signup">
-                        Sign Up
+                    <form action="/signup" method="POST" class="navForm">
+                        <button type="submit" class="btn logout">
+                          Sign Up
+                        </button>
                     </form>
                 </div>
             </div>

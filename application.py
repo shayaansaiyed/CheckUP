@@ -172,18 +172,19 @@ def processSignIn():
 
 @application.route('/graphs', methods=['GET', 'POST'])
 def graphs():
+	userID = session["username"]
 	if request.method == 'GET':
 		cursor = conn.cursor()
-		query = "SELECT data FROM data WHERE userID = 1 AND typeID = 3"
-		cursor.execute(query)
+		query = "SELECT data FROM data WHERE userID = %s AND typeID = %s"
+		cursor.execute(query, (userID,str(3)))
 		data = cursor.fetchall()
 		yValues = []
 		for j in data:
 			yValues.append(j['data'])
 		print()
 		cursor = conn.cursor()
-		query = "SELECT * FROM data WHERE userID = 1 AND typeID = 3"
-		cursor.execute(query)
+		query = "SELECT * FROM data WHERE userID = %s AND typeID = %s"
+		cursor.execute(query, (userID,str(3)))
 		data = cursor.fetchall()
 		xValues = []
 		for j in data:
@@ -247,8 +248,10 @@ def handle_signup():
 
 @application.route('/files', methods=['GET', 'POST'])
 def files():
+	userID = session["username"]
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM documents")
+	query = "SELECT * FROM documents WHERE userID = %s"
+	cur.execute(query, (userID))
 	data = cur.fetchall()
 	# print ("Data" + data)
 	return render_template('files.html', data=data)

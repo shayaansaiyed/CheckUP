@@ -5,10 +5,10 @@ application = Flask(__name__)
 
 application.config['UPLOAD_FOLDER'] = "./static/Documents/"
 
-conn = pymysql.connect(host='localhost',
+conn = pymysql.connect(host='checkupdb.clvo2ema2nfj.us-east-2.rds.amazonaws.com',
 						port = 3306,
 						user='checkupdb',
-						# password='Strauss4life',
+						password='Strauss4life',
 						db='checkupdb',
 						charset='utf8mb4',
 						cursorclass=pymysql.cursors.DictCursor
@@ -92,36 +92,47 @@ def handle_data_upload():
 
 	#TODO: fix height
 
+	print(heightIN)
+	print(weight)
+	print(bloodPressure)
+	print (heartRate)
+	print(bloodSugar)
+
 	#temp values for until the front end is fixed
-	# weight = "0.00"
-	# heightFT = "0.00"
-	# heightIN = "0.00"
-	# bloodSugar= "0.00"
-	# bloodPressure = "0.00"
-	# heartRate = "0.00"
+	# weight = 'NULL'
+	# heightFT = 'NULL'
+	# heightIN = 'NULL'
+	# bloodSugar=  'NULL'
+	# bloodPressure =  'NULL'
+	# heartRate =  'NULL'
 
 	#temp values for until the front end is fixe
 	cursor = conn.cursor()
 
-	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), weight, 1))
-	conn.commit()
+	if (weight):
+		query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+		cursor.execute(query, (str(userID), weight, 1))
+		conn.commit()
 
-	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), heightIN, 0))
-	conn.commit()
+	if (heightIN):
+		query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+		cursor.execute(query, (str(userID), heightIN, 0))
+		conn.commit()
 
-	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), heartRate, 2))
-	conn.commit()
+	if (heartRate):
+		query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+		cursor.execute(query, (str(userID), heartRate, 2))
+		conn.commit()
 
-	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), bloodPressure, 3))
-	conn.commit()
+	if (bloodPressure):
+		query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+		cursor.execute(query, (str(userID), bloodPressure, 3))
+		conn.commit()
 
-	query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
-	cursor.execute(query, (str(userID), bloodSugar, 4))
-	conn.commit()
+	if (bloodSugar):
+		query = "INSERT INTO data (userID, data, TypeID) VALUES (%s,%s,%s)"
+		cursor.execute(query, (str(userID), bloodSugar, 4))
+		conn.commit()
 
 	cursor.close()
 	return render_template('upload.html')

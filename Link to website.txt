@@ -1,0 +1,1 @@
+http://checkuptest-env.x7trrj2mmq.us-east-2.elasticbeanstalk.com/
